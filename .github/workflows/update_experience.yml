@@ -1,16 +1,14 @@
-name: Test Update Experience
+name: Update Experience on April 10th
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  test_update_experience:
+  update_experience:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Setup Node.js
@@ -18,11 +16,16 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run test script
-      run: node test-script.js
-
-    - name: Display updated data
-      run: cat data.json
+    - name: Update JSON file
+      run: |
+        current_date=$(date -u +'%m-%d')
+        if [ "$current_date" == "04-10" ]; then
+          coding_experience=$(jq '.codingExperience += 1' ../../data.json)
+          tech_experience=$(jq '.techExperience += 1' ../../data.json)
+          echo "{\"codingExperience\":$coding_experience,\"techExperience\":$tech_experience}" > ../../data.json
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add data.json
+          git commit -m "Update experience on April 10th"
+          git push
+        fi
