@@ -1,7 +1,9 @@
 name: Update Experience on April 10th
 
 on:
-  workflow_dispatch:
+  schedule:
+    # Jeden 10. April um 00:00 Uhr UTC
+    - cron: '0 0 10 4 *'
 
 jobs:
   update_experience:
