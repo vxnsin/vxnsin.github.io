@@ -13,6 +13,7 @@
     <meta property="og:locale" content="en_US">
 </head>
 <body> 
+    
     <div id="container--main">
         <section class="section--page" id="wrapper--hero">
             <div class="light-strip top"></div>
@@ -25,6 +26,7 @@
                     For me, coding is more than just a skill - it's my destiny.<br><br>
                     Feel free to reach out to me on Discord <u><small>(vxnsin)</small></u> if you have any questions or inquiries.
                 </p>
+                <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me', '#00a4fc', 'X8X7WM1ZQ');kofiwidget2.draw();</script> 
             </div>
         </section>
         <section class="section--page">
@@ -41,6 +43,7 @@
                 <a href="https://youtube.com/@Vxnsin" target="_blank">
                     <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDUwIDUwIgpzdHlsZT0iZmlsbDojRkZGRkZGOyI+CjxwYXRoIGQ9Ik0gNDQuODk4NDM4IDE0LjUgQyA0NC41IDEyLjMwMDc4MSA0Mi42MDE1NjMgMTAuNjk5MjE5IDQwLjM5ODQzOCAxMC4xOTkyMTkgQyAzNy4xMDE1NjMgOS41IDMxIDkgMjQuMzk4NDM4IDkgQyAxNy44MDA3ODEgOSAxMS42MDE1NjMgOS41IDguMzAwNzgxIDEwLjE5OTIxOSBDIDYuMTAxNTYzIDEwLjY5OTIxOSA0LjE5OTIxOSAxMi4xOTkyMTkgMy44MDA3ODEgMTQuNSBDIDMuMzk4NDM4IDE3IDMgMjAuNSAzIDI1IEMgMyAyOS41IDMuMzk4NDM4IDMzIDMuODk4NDM4IDM1LjUgQyA0LjMwMDc4MSAzNy42OTkyMTkgNi4xOTkyMTkgMzkuMzAwNzgxIDguMzk4NDM4IDM5LjgwMDc4MSBDIDExLjg5ODQzOCA0MC41IDE3Ljg5ODQzOCA0MSAyNC41IDQxIEMgMzEuMTAxNTYzIDQxIDM3LjEwMTU2MyA0MC41IDQwLjYwMTU2MyAzOS44MDA3ODEgQyA0Mi44MDA3ODEgMzkuMzAwNzgxIDQ0LjY5OTIxOSAzNy44MDA3ODEgNDUuMTAxNTYzIDM1LjUgQyA0NS41IDMzIDQ2IDI5LjM5ODQzOCA0Ni4xMDE1NjMgMjUgQyA0NS44OTg0MzggMjAuNSA0NS4zOTg0MzggMTcgNDQuODk4NDM4IDE0LjUgWiBNIDE5IDMyIEwgMTkgMTggTCAzMS4xOTkyMTkgMjUgWiI+PC9wYXRoPgo8L3N2Zz4=" alt="Youtube" title="Youtube" />
                 </a>
+
             </div>
         </section>
         <div class="line-break"></div>
@@ -52,6 +55,7 @@
                 <li title="Languages" alt="Languages">💬 ᕁ German, English</li>
                 <li title="Location" alt="Location">🌍 ᕁ Germany, Bavaria</li>
                 <li title="Music" alt="Music">🎧 ᕁ Phonk</li>
+                <li title="I-❤️" alt="I-❤️">❤️ ᕁ Gaming & Anime</li>
             </ul>
         </section>
         <section class="section--page">
@@ -62,15 +66,12 @@
             </ul>
             <script>
                 function updateExperience() {
-                    // Laden der JSON-Datei
                     fetch('./data.json')
                     .then(response => response.json())
                     .then(data => {
-                        // Die Werte aus der JSON-Datei lesen
                         var codingExperienceValue = data.codingExperience;
                         var techExperienceValue = data.techExperience;
-                        
-                        // Die Werte in das HTML einfügen
+                    
                         document.getElementById("codingExperience").innerText = codingExperienceValue + " Years ᕁ Coding experience.";
                         document.getElementById("techExperience").innerText = techExperienceValue + " Years ᕁ Tech experience.";
                     })
