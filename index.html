@@ -13,7 +13,24 @@
     <meta property="og:locale" content="en_US">
 </head>
 <body> 
-    <!--About Me-->
+    <video autoplay muted loop id="video-background">
+        <source src="background.webm" type="video/webm">
+    </video>
+    <div id="blur-screen" onclick="removeBlur()">
+        <div id="blur-text-1">{ click }</div>
+        <div id="blur-text-2">{ This Page contains Audio }</div>
+    </div>     <!--About Me-->
+    <script>
+        // Funktion zum Entfernen des Blur-Effekts und Anzeigen des Inhalts
+        function removeBlur() {
+            var blurScreen = document.getElementById('blur-screen');
+                blurScreen.style.display = 'none';
+            var audio = new Audio('./stan.mp3');
+                audio.volume = 0.2
+                audio.loop = true
+             audio.play();
+        }
+    </script>
     <div id="container--main">
         <section class="section-info" id="wrapper--hero">
                 <div class="light-strip top"></div>
