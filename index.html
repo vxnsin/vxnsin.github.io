@@ -17,9 +17,9 @@
     <video autoplay muted loop id="video-background">
         <source src="./assets/background.webm" type="video/webm">
     </video>
-    <div id="blur-screen" onclick="removeBlur()">
-        <div id="blur-text-1">{ click }</div>
-        <div id="blur-text-2">[ This Page contains Audio ]</div>
+        <div id="blur-screen" onclick="removeBlur()">
+        <div id="blur-text">{ click }</div>
+        <div id="blur-text">[ This Page contains Audio ]</div>
     </div>  
     <audio id="myAudio" src="./stan.mp3"></audio>
     <div id="container--main">
@@ -58,19 +58,17 @@
         <!--Aboout-Me-->
         <section class="section--page">
             <h2 align="center">About Me</h2>
-                <ul id="qualifications--list">
-                    <li title="Name" alt="Music">📛 ᕁ Luis</li>
-                    <li title="Birthday" alt="Birthday">🎂 ᕁ 10 April</li>
-                    <li title="Languages" alt="Languages">💬 ᕁ German, English</li>
-                    <li title="Location" alt="Location">🌍 ᕁ Germany, Bavaria</li>
+                    <p align="center" title="Name" alt="Music">📛 ᕁ Luis</p>
+                    <p align="center" title="Birthday" alt="Birthday">🎂 ᕁ 10 April</p>
+                    <p align="center" title="Languages" alt="Languages">💬 ᕁ German, English</p>
+                    <p align="center" title="Location" alt="Location">🌍 ᕁ Germany, Bavaria</p>
                 </ul>
             </section>
         <!--Skills-->
         <section class="section--page">
             <h2 align="center">Skills</h2>
-            <ul id="skills--list">
-                <li id="codingExperience">N/A Years ᕁ Coding experience.</li>
-                <li id="techExperience">N/A Years ᕁ Tech experience.</li>
+                <p align="center" id="codingExperience">N/A Years ᕁ Coding experience.</p>
+                <p align="center" id="techExperience">N/A Years ᕁ Tech experience.</p>
             </ul>
                 <script>
                     function updateExperience() {
@@ -92,12 +90,12 @@
         <section class="section--page">
             <h2 align="center">Tech stack</h2>
             <div id="wrapper--techstack__items">
-                <div class="card--techstack"><span>HTML, CSS & JavaScript</span></div>
-                <div class="card--techstack"><span>Java, Python & Lua</span></div>
-                <div class="card--techstack"><span>Git & GitHub</span></div>
-                <div class="card--techstack"><span>MySQL & MongoDB</span></div>
-                <div class="card--techstack"><span>Windows & Debian</span></div> 
-                <div class="card--techstack"><span>IntelliJ IDEA , VS Code & Unity</span></div>
+                <div title="Web Development" class="card--techstack"><span>HTML, CSS & JavaScript</span></div>
+                <div title="Programming Languages" class="card--techstack"><span>Java, Python & Lua</span></div>
+                <div title="Repository" class="card--techstack"><span>Git & GitHub</span></div>
+                <div title="Database" class="card--techstack"><span>MySQL & MongoDB</span></div>
+                <div title="Operating System" c class="card--techstack"><span>Windows & Debian</span></div> 
+                <div title="Code Editors" class="card--techstack"><span>IntelliJ IDEA , VS Code & Unity</span></div>
             </div>
         </section>
             <!--Projects-->
@@ -126,7 +124,11 @@
                             <strong>GamesCloud [Aborted ᕁ 2022]</strong>
                             <p>GamesCloud was a Minecraft Network, it was canceled due to the too small number of players and to the lack of motivation.</p>
                         </div>
+                        <div class="line-break--nocolor"></div>
              </section>
          </div>
     </body>
+    <footer>
+        Made with ❤️ by vxnsin
+    </footer>
 </html>

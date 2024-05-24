@@ -1,5 +1,5 @@
 // function([string1, string2],target id,[color1,color2])    
-consoleText(['Vxnsin', 'About Me'], 'text',['lightblue','tomato']);
+consoleText(['Vxnsin', 'About Me'], 'text',['white','white']);
 
 function consoleText(words, id, colors) {
   if (colors === undefined) colors = ['#fff'];
@@ -56,8 +56,6 @@ function removeBlur() {
     containerMain.classList.remove('hidden');
     containerMain.style.opacity = '1';
     containerMain.style.transform = 'translateY(0)';
-    // Get the audio element
-    // Get the audio element
     var audio = document.getElementById('myAudio');
     
     audio.volume = 0.2; 
