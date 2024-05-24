@@ -2,9 +2,9 @@
 
 :root {
     --mainTextColor-dark: #fff;
-    --secondaryTextColor-dark: #adb0b1;
+    --secondaryTextColor-dark: #e7e7e7;
     --mainLinkColor-dark: rgb(30, 190, 214);
-    --mainBorderColor-dark: #2b3031;
+    --mainBorderColor-dark: #8f8f8f;
     --mainBgColor-dark: #131415;
     --gradiant: linear-gradient(to right, #00c6ff, #0072ff);
     --mainTextColor: var(--mainTextColor-dark);
@@ -63,14 +63,21 @@ li {
     line-height: 1.9em
 }
 
+.hidden {
+    display: none;
+}
+
 #container--main {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 1s ease, transform 1s ease;
     max-width: 700px;
     margin: 0 auto;
     padding: 1em;
 }
 
 .section--page {
-    position: relative; /* Damit die Positionierung des Textes relativ zum Container ist */
+    position: relative; 
 }
 
 .section--page::before {
@@ -79,10 +86,10 @@ li {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 109%;
     border-radius: 20px;
     background-color: rgba(17, 17, 17, 0.5);
-    z-index: -1; /* Damit der geblurte Hintergrund hinter dem Text liegt */
+    z-index: -1; 
 }
 
 .section-info {
@@ -133,7 +140,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* Abstand zwischen Profil und Social-Liste */
+    gap: 10px; 
 }
 
 #profile-pic {
@@ -188,6 +195,7 @@ a {
 
 .line-break {
     background-color: var(--mainBorderColor);
+    top: 1px;
     height: 1px
 }
 
@@ -293,14 +301,18 @@ a {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.705); 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 9999; 
 }
 
 #blur-text {
+    filter: blur(5px); 
     color: white;
     font-size: 24px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5); 
 }
 #video-background {
     position: fixed;
@@ -308,7 +320,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the video covers the entire viewport */
+    object-fit: cover;
     z-index: -1;
 }
 #video-content {

@@ -49,3 +49,20 @@ function consoleText(words, id, colors) {
     }
   }, 400)
 }
+function removeBlur() {
+    var blurScreen = document.getElementById('blur-screen');
+    blurScreen.style.display = 'none';
+    var containerMain = document.getElementById('container--main');
+    containerMain.classList.remove('hidden');
+    containerMain.style.opacity = '1';
+    containerMain.style.transform = 'translateY(0)';
+    // Get the audio element
+    // Get the audio element
+    var audio = document.getElementById('myAudio');
+    
+    audio.volume = 0.2; 
+
+    audio.loop = true; 
+    
+    audio.play();
+}

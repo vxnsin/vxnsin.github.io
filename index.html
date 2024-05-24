@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css"/>
     <title>Vensin | Vxnsin</title>
     <meta property="og:title" content="Vxnsin's About Me">
@@ -13,28 +13,20 @@
     <meta property="og:locale" content="en_US">
 </head>
 <body> 
+    <script src="./script.js"></script>
     <video autoplay muted loop id="video-background">
-        <source src="background.webm" type="video/webm">
+        <source src="./assets/background.webm" type="video/webm">
     </video>
     <div id="blur-screen" onclick="removeBlur()">
         <div id="blur-text-1">{ click }</div>
-        <div id="blur-text-2">{ This Page contains Audio }</div>
-    </div>     <!--About Me-->
-    <script>
-        // Funktion zum Entfernen des Blur-Effekts und Anzeigen des Inhalts
-        function removeBlur() {
-            var blurScreen = document.getElementById('blur-screen');
-                blurScreen.style.display = 'none';
-            var audio = new Audio('./stan.mp3');
-                audio.volume = 0.2
-                audio.loop = true
-             audio.play();
-        }
-    </script>
+        <div id="blur-text-2">[ This Page contains Audio ]</div>
+    </div>  
+    <audio id="myAudio" src="./stan.mp3"></audio>
     <div id="container--main">
         <section class="section-info" id="wrapper--hero">
                 <div class="light-strip top"></div>
                 <div id="profile">
+                    <!--About Me-->
                     <img src="https://avatars.githubusercontent.com/u/51481323?v=4" alt="Vxnsin" id="profile-pic"
                         title="Vxnsin"/>
                         <div id="socials--list">
@@ -55,7 +47,7 @@
                     </div>
                 <div>
                     <div class='username-container'><span id='text'></span><div class='underscore' id='username'>&#95;</div></div>
-                    <script src="./text.js"></script>
+                    <script src="./script.js"></script>
                     <p id="bio">
                         Hello, I'm Vensin, a German developer.<br> 
                         For me, coding is more than just a skill - it's my destiny.<br><br>
@@ -65,18 +57,17 @@
             </section>
         <!--Aboout-Me-->
         <section class="section--page">
-            <h2>👤 ᕁ About Me</h2>
+            <h2 align="center">About Me</h2>
                 <ul id="qualifications--list">
                     <li title="Name" alt="Music">📛 ᕁ Luis</li>
                     <li title="Birthday" alt="Birthday">🎂 ᕁ 10 April</li>
                     <li title="Languages" alt="Languages">💬 ᕁ German, English</li>
                     <li title="Location" alt="Location">🌍 ᕁ Germany, Bavaria</li>
-                    <li title="Music" alt="Music">🎧 ᕁ Phonk</li>
                 </ul>
             </section>
         <!--Skills-->
         <section class="section--page">
-            <h2>💡 ᕁ Skills</h2>
+            <h2 align="center">Skills</h2>
             <ul id="skills--list">
                 <li id="codingExperience">N/A Years ᕁ Coding experience.</li>
                 <li id="techExperience">N/A Years ᕁ Tech experience.</li>
@@ -99,7 +90,7 @@
             </section>
         <!--Tech-Stack-->
         <section class="section--page">
-            <h2>⌨️ ᕁ Tech stack</h2>
+            <h2 align="center">Tech stack</h2>
             <div id="wrapper--techstack__items">
                 <div class="card--techstack"><span>HTML, CSS & JavaScript</span></div>
                 <div class="card--techstack"><span>Java, Python & Lua</span></div>
@@ -111,7 +102,7 @@
         </section>
             <!--Projects-->
             <section class="section--page" id="work-history-wrapper">
-                <h2>💼 ᕁ Projects</h2>
+                <h2 align="center">Projects</h2>
                     <div class="line-break"></div>
                         <div class="card--work-history">
                             <strong>Service Bot [Currently Working on ᕁ 2024]</strong>
@@ -135,7 +126,6 @@
                             <strong>GamesCloud [Aborted ᕁ 2022]</strong>
                             <p>GamesCloud was a Minecraft Network, it was canceled due to the too small number of players and to the lack of motivation.</p>
                         </div>
-                    <div class="line-break"></div>
              </section>
          </div>
     </body>
