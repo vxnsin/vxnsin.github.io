@@ -3,10 +3,10 @@ const container = document.querySelector('.links-container');
 container.addEventListener('click', function(event) {
     const shareButton = event.target.closest('.title-share-button');
     if (shareButton) {
-        event.preventDefault(); // Verhindert das Standardverhalten des Links
+        event.preventDefault(); 
         const link = shareButton.getAttribute('link');
         if (isMobileDevice()) {
-            openShareMenu(link);
+            shareViaWebAPI(link);
         } else {
             copyText(link);
         }
@@ -23,42 +23,19 @@ async function copyText(link) {
 }
 
 function isMobileDevice() {
-    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
-function openShareMenu(link) {
-    const shareMenu = document.createElement('div');
-    shareMenu.classList.add('share-menu');
-
-    const whatsappButton = createShareButton('WhatsApp', 'fab fa-whatsapp', () => {
-        // Hier könnte die Logik für das Teilen über WhatsApp eingefügt werden
-        alert("Sharing via WhatsApp: " + link);
+function shareViaWebAPI(link) {
+    navigator.share({
+        title: 'Share Link',
+        text: '👋 - Check out this link:',
+        url: link,
+    }).then(() => {
+        console.log('Link shared successfully');
+    }).catch((error) => {
+        console.error('Error sharing link:', error);
     });
-
-    const facebookButton = createShareButton('Facebook', 'fab fa-facebook', () => {
-        // Hier könnte die Logik für das Teilen über Facebook eingefügt werden
-        alert("Sharing via Facebook: " + link);
-    });
-
-    const twitterButton = createShareButton('Twitter', 'fab fa-twitter', () => {
-        // Hier könnte die Logik für das Teilen über Twitter eingefügt werden
-        alert("Sharing via Twitter: " + link);
-    });
-
-    shareMenu.appendChild(whatsappButton);
-    shareMenu.appendChild(facebookButton);
-    shareMenu.appendChild(twitterButton);
-
-    // Beispiel: Anhängen des Share-Menüs an den Body
-    document.body.appendChild(shareMenu);
-}
-
-function createShareButton(title, iconClass, onClick) {
-    const button = document.createElement('button');
-    button.classList.add('share-button');
-    button.innerHTML = `<i class="${iconClass}"></i> ${title}`;
-    button.addEventListener('click', onClick);
-    return button;
 }
 
 function loadJSON(callback) {
