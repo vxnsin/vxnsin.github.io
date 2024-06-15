@@ -1,0 +1,20 @@
+[
+    {
+        "name": "YouTube",
+        "icon": "fa-youtube",
+        "url": "https://www.youtube.com/@vxnsin",
+        "shareButton": true
+    },
+    {
+        "name": "Twitter",
+        "icon": "fa-twitter",
+        "url": "https://www.twitter.com/@_Vensin",
+        "shareButton": true
+    },
+    {
+        "name": "Github",
+        "icon": "fa-github",
+        "url": "https://github.com/vxnsin",
+        "shareButton": true
+    }
+]

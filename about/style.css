@@ -15,7 +15,7 @@
 }
 
 * {
-    font-family: 'Readex Pro';
+    font-family: 'Readex Pro', Tahoma, sans-serif;;
     line-height: 1.5em;
     box-sizing: border-box;
     color: var(--mainTextColor)
