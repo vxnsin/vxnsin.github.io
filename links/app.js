@@ -38,6 +38,7 @@ function shareViaWebAPI(link) {
     });
 }
 
+
 function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
