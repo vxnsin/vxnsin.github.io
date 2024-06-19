@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weiterleitung...</title>
+    <script>
+        function redirect() {
+            const path = window.location.pathname;
+            const redirects = {
+                "/go/discord": "https://discord.com/invite/DEIN_DISCORD_EINLADUNGSLINK",
+                "/go/github": "https://github.com/vxnsin",
+                "/go/twitter": "https://twitter.com/_Vensin"
+            };
+
+            const redirectUrl = redirects[path];
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
+            } else {
+                document.getElementById("message").innerText = "Diese Seite existiert nicht. Bitte überprüfe die URL.";
+            }
+        }
+
+        window.onload = redirect;
+    </script>
+</head>
+<body>
+    <p id="message">Wenn du nicht automatisch weitergeleitet wirst, überprüfe bitte die URL.</p>
+</body>
+</html>
