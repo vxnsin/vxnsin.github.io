@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weiterleitung...</title>
+    <link rel="stylesheet" href="./style.css">
     <script>
         function redirect() {
             const redirectUrl = "https://tiktok.com/@vxnsin";
             window.location.href = redirectUrl;
-            document.getElementById("message").innerHTML = 'Wenn du nicht automatisch weitergeleitet wirst, <a href="' + redirectUrl + '">klicke hier</a>.';
+            document.getElementById("message").innerHTML = 'Wenn du nicht automatisch weitergeleitet wirst.';
+            document.getElementById("back").style.display = 'none';
+            document.getElementById("manualRedirect").style.display = 'inline-block';
+            document.getElementById("manualRedirect").setAttribute("href", redirectUrl)
         }
 
         window.onload = redirect;
     </script>
 </head>
 <body>
-    <p id="message">Wenn du nicht automatisch weitergeleitet wirst, überprüfe bitte die URL.</p>
+    <div class="container">
+        <p id="message">Wenn du nicht automatisch weitergeleitet wirst, überprüfe bitte die URL.</p>
+        <a href="/" id="back" class="btn">Zurück zur Startseite</a>
+        <a id="manualRedirect" class="btn" style="display: none;">Klick hier</a>
+    </div>
 </body>
 </html>
