@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weiterleitung...</title>
+    <script>
+        function redirect() {
+            const redirectUrl = "https://tiktok.com/@vxnsin";
+            window.location.href = redirectUrl;
+            document.getElementById("message").innerHTML = 'Wenn du nicht automatisch weitergeleitet wirst, <a href="' + redirectUrl + '">klicke hier</a>.';
+        }
+
+        window.onload = redirect;
+    </script>
+</head>
+<body>
+    <p id="message">Wenn du nicht automatisch weitergeleitet wirst, überprüfe bitte die URL.</p>
+</body>
+</html>
