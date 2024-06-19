@@ -16,6 +16,7 @@
             const redirectUrl = redirects[path];
             if (redirectUrl) {
                 window.location.href = redirectUrl;
+                document.getElementById("message").innerHTML = 'Wenn du nicht automatisch weitergeleitet wirst, <a href="' + redirectUrl + '">klicke hier</a>.';
             } else {
                 document.getElementById("message").innerText = "Diese Seite existiert nicht. Bitte überprüfe die URL.";
             }
