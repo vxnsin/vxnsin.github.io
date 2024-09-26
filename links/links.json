@@ -16,5 +16,11 @@
         "icon": "fa-github",
         "url": "https://github.com/vxnsin",
         "shareButton": true
+    },
+    {
+        "name": "TikTok",
+        "icon": "fa-tiktok",
+        "url": "https://www.tiktok.com/@vxnsin",
+        "shareButton": true
     }
 ]
