@@ -15,13 +15,13 @@ html_template = """<!DOCTYPE html>
     <meta property="og:title" content="{title}">
     <meta property="og:description" content="{description}">
     <meta property="og:url" content="{url}" id="og-url">
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/51481323?v=4">
+    <meta property="og:image" content="{image}">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{title}">
     <meta name="twitter:description" content="{description}">
-    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/51481323?v=4">
+    <meta name="twitter:image" content="{image}">
     <meta name="twitter:url" content="{url}" id="twitter-url">
 
     <script>
@@ -57,6 +57,7 @@ for redirect in redirects:
         title=redirect['title'],
         description=redirect['description'],
         url=redirect['url'],
+        image=redirect['image'],
     )
     
     with open(os.path.join(output_directory, redirect['filename']), 'w', encoding='utf-8') as f:
