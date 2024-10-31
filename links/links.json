@@ -22,5 +22,11 @@
         "icon": "fa-tiktok",
         "url": "https://www.tiktok.com/@vxnsin",
         "shareButton": true
+    },
+    {
+        "name": "Steam",
+        "icon": "fa-steam",
+        "url": "https://steamcommunity.com/id/vxnsin",
+        "shareButton": true
     }
 ]
