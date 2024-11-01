@@ -191,39 +191,74 @@ async function updateStatus() {
       }
 
       const filteredActivities = activities.filter(activity => 
-          activity.type !== 4 && 
-          !(activity.type === 1 && activity.name === "Spotify") 
-      );
+        activity.type !== 4 
+    );
 
-      const activityCount = filteredActivities.length;
-
-      if (activityCount > 0) {
-          const activity = filteredActivities[currentActivityIndex];
-          let activityText = '';
-          let emoji = '';
-
-          switch (activity.name) {
-              case "AniWorld":
-                  emoji = '🍿';
-                  activityText = `Anime - ${activity.details}`;
-                  break;
-              case "Visual Studio Code":
-                  emoji = '⌨️';
-                  const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim();
-                  activityText = `Working - ${filteredDetails}`;
-                  break;
+      const hasSpotify = filteredActivities.some(activity => activity.name === "Spotify" && activity.type === 1);
+      const hasCustomStatus = filteredActivities.some(activity => activity.name === "Custom Status" && activity.type === 1);
+      
+      if (hasSpotify || hasCustomStatus) {
+          const blacklistedActivities = ["Spotify", "Custom Status"];
+          const activitiesToDisplay = filteredActivities.filter(activity => 
+              !blacklistedActivities.includes(activity.name) || 
+              (activity.name === "Spotify" && activity.type === 1) ||
+              (activity.name === "Custom Status" && activity.type === 1)
+          );
+      
+          if (activitiesToDisplay.length > 0) {
+              const activity = activitiesToDisplay[currentActivityIndex];
+              let activityText = '';
+              let emoji = '';
+      
+              switch (activity.name) {
+                  case "AniWorld":
+                      emoji = '🍿';
+                      activityText = `Anime - ${activity.details}`;
+                      break;
+                  case "Visual Studio Code":
+                      emoji = '⌨️';
+                      const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim();
+                      activityText = `Working - ${filteredDetails}`;
+                      break;
+              }
+      
+              activityIcon.css('display', 'block') 
+                  .attr("data-activity", activityText) 
+                  .text(emoji);
+      
+              currentActivityIndex = (currentActivityIndex + 1) % activitiesToDisplay.length;
+              activityIcon.attr("data-index", currentActivityIndex);
+          } else {
+              activityIcon.css('display', 'none'); 
           }
-
-          activityIcon.css('display', 'block') 
-              .attr("data-activity", activityText) 
-              .text(emoji);
-
-          currentActivityIndex = (currentActivityIndex + 1) % filteredActivities.length;
-          activityIcon.attr("data-index", currentActivityIndex);
       } else {
-          activityIcon.css('display', 'none'); 
+          if (filteredActivities.length > 0) {
+              const activity = filteredActivities[currentActivityIndex];
+              let activityText = '';
+              let emoji = '';
+      
+              switch (activity.name) {
+                  case "AniWorld":
+                      emoji = '🍿';
+                      activityText = `Anime - ${activity.details}`;
+                      break;
+                  case "Visual Studio Code":
+                      emoji = '⌨️';
+                      const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim();
+                      activityText = `Working - ${filteredDetails}`;
+                      break;
+              }
+      
+              activityIcon.css('display', 'block') 
+                  .attr("data-activity", activityText) 
+                  .text(emoji);
+      
+              currentActivityIndex = (currentActivityIndex + 1) % filteredActivities.length;
+              activityIcon.attr("data-index", currentActivityIndex);
+          } else {
+              activityIcon.css('display', 'none'); 
+          }
       }
   }
 }
-
 setInterval(updateStatus, 60000);
