@@ -17,6 +17,9 @@
     <meta name="twitter:title" content="Vensin's About Me">
     <meta name="twitter:description" content="Developer nothing more">
     <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/51481323?v=4"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body> 
     <script src="about/script.js"></script>
@@ -27,6 +30,9 @@
         <div id="blur-text">{ click }</div>
         <div id="blur-text">[ This Page contains Audio ]</div>
     </div>  
+    <div class="mute-container" id="muteButton">
+        <i class="fas fa-volume-up icon"></i> 
+    </div>
     <audio id="myAudio" src="about/stan.mp3"></audio>
     <div id="container--main">
         <section class="section-info" id="wrapper--hero">
@@ -39,8 +45,10 @@
                             <div id="profile-picture">
                                 <img id="profile-pic" src="https://avatars.githubusercontent.com/u/51481323?v=4" alt="Profilbild" />
                             </div>
-                            <div id="music-icon" class="music-icon">📀</div> 
+                            <div id="activity-icon" class="activity-icon">⌨️</div> 
                             <div id="status-icon" class="status-icon">💬</div> 
+                            <div id="music-icon" class="music-icon">📀</div> 
+                            <div id="activity-popup" class="activity-popup"></div> 
                             <div id="song-popup" class="song-popup"></div> 
                             <div id="status-popup" class="status-popup"></div> 
                         </div>
@@ -69,7 +77,6 @@
                     </div>
                 <div>
                     <div class='username-container'><span id='text'></span><div class='underscore' id='username'>&#95;</div></div>
-                    <script src="about/script.js"></script>
                     <p id="bio">
                         Hello, I'm Vensin, a German developer.<br> 
                         For me, coding is more than just a skill - it's my destiny.<br><br>

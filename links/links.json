@@ -2,31 +2,37 @@
     {
         "name": "YouTube",
         "icon": "fa-youtube",
-        "url": "https://www.youtube.com/@vxnsin",
+        "url": "https:/vxnsin.github.io/go/youtube",
         "shareButton": true
     },
     {
         "name": "Twitter",
         "icon": "fa-twitter",
-        "url": "https://www.twitter.com/@_Vensin",
+        "url": "https:/vxnsin.github.io/go/twitter",
         "shareButton": true
     },
     {
         "name": "Github",
         "icon": "fa-github",
-        "url": "https://github.com/vxnsin",
+        "url": "https:/vxnsin.github.io/go/github",
         "shareButton": true
     },
     {
         "name": "TikTok",
         "icon": "fa-tiktok",
-        "url": "https://www.tiktok.com/@vxnsin",
+        "url": "https:/vxnsin.github.io/go/tiktok",
         "shareButton": true
     },
     {
         "name": "Steam",
         "icon": "fa-steam",
-        "url": "https://steamcommunity.com/id/vxnsin",
+        "url": "https:/vxnsin.github.io/go/steam",
+        "shareButton": true
+    },
+    {
+        "name": "Discord",
+        "icon": "fa-discord",
+        "url": "https:/vxnsin.github.io/go/dcacc",
         "shareButton": true
     }
 ]
