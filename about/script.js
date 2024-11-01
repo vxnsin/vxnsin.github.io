@@ -197,7 +197,7 @@ async function updateStatus() {
             const activitiesToDisplay = activities.filter(activity => activity.name !== "Spotify");
 
             if (activitiesToDisplay.length > 0) {
-                const activity = activitiesToDisplay[currentActivityIndex];
+                const activity = await activitiesToDisplay[currentActivityIndex];
                 let activityText = '';
                 let emoji = '';
                 
