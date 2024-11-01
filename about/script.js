@@ -1,93 +1,90 @@
 let currentActivityIndex = 0;
 
 $(document).ready(function() {
-  updateStatus();
-  consoleText(['Vensin', 'About Me'], 'text', ['white', 'white']);
-  
-  const muteButton = $("#muteButton");
-  const audio = $("#myAudio")[0];
+    updateStatus();
+    consoleText(['Vensin', 'About Me'], 'text', ['white', 'white']);
 
-  if (muteButton.length && audio) {
-      muteButton.on("click", function() {
-          audio.muted = !audio.muted;
-          $(this).html(audio.muted 
-              ? '<i class="fas fa-volume-mute icon"></i>' 
-              : '<i class="fas fa-volume-up icon"></i>'
-          );
-      });
-  } else {
-      console.error("Mute Button or Audio Element not found.");
-  }
+    const muteButton = $("#muteButton");
+    const audio = $("#myAudio")[0];
 
-  const activityIcon = $("#activity-icon");
-  const activityPopup = $("#activity-popup");
+    if (muteButton.length && audio) {
+        muteButton.on("click", function() {
+            audio.muted = !audio.muted;
+            $(this).html(audio.muted 
+                ? '<i class="fas fa-volume-mute icon"></i>' 
+                : '<i class="fas fa-volume-up icon"></i>'
+            );
+        });
+    } else {
+        console.error("Mute Button or Audio Element not found.");
+    }
 
-  if (activityIcon.length && activityPopup.length) {
-      activityIcon.on("click", function() {
-          const currentActivity = $(this).data("activity");
-          if (currentActivity) {
-              activityPopup.text(currentActivity);
-              activityPopup.css({opacity: 0, display: 'block'});
-              setTimeout(() => {
-                  activityPopup.animate({opacity: 1}, 100);
-              }, 100);
-              setTimeout(() => {
-                  activityPopup.animate({opacity: 0}, 500, () => {
-                      activityPopup.css('display', 'none');
-                  });
-              }, 5000);
-          }
-      });
-  } else {
-      console.error("Activity icon or popup element not found");
-  }
+    const activityIcon = $("#activity-icon");
+    const activityPopup = $("#activity-popup");
 
-  const musicIcon = $("#music-icon");
-  const songPopup = $("#song-popup");
+    if (activityIcon.length && activityPopup.length) {
+        activityIcon.on("click", function() {
+            const currentActivity = $(this).data("activity");
+            if (currentActivity) {
+                activityPopup.text(currentActivity);
+                activityPopup.css({ opacity: 0, display: 'block' });
+                activityPopup.animate({ opacity: 1 }, 300); 
 
-  if (musicIcon.length && songPopup.length) {
-      musicIcon.on("click", function() {
-          const currentSong = $(this).data("song");
-          const songLink = $(this).data("song-link");
-          if (currentSong) {
-              songPopup.html(`<a href="${songLink}" target="_blank" style="color: white; text-decoration: none;">${currentSong}</a>`);
-              songPopup.css({opacity: 0, display: 'block'});
-              setTimeout(() => {
-                  songPopup.animate({opacity: 1}, 100);
-              }, 100);
-              setTimeout(() => {
-                  songPopup.animate({opacity: 0}, 500, () => {
-                      songPopup.css('display', 'none');
-                  });
-              }, 5000);
-          }
-      });
-  } else {
-      console.error("Music icon or song popup element not found");
-  }
+                setTimeout(() => {
+                    activityPopup.animate({ opacity: 0 }, 1200, () => { 
+                        activityPopup.css('display', 'none');
+                    });
+                }, 3000); 
+            }
+        });
+    } else {
+        console.error("Activity icon or popup element not found");
+    }
 
-  const statusIcon = $("#status-icon");
-  const statusPopup = $("#status-popup");
+    const musicIcon = $("#music-icon");
+    const songPopup = $("#song-popup");
 
-  if (statusIcon.length && statusPopup.length) {
-      statusIcon.on("click", function() {
-          const currentState = $(this).data("state");
-          if (currentState) {
-              statusPopup.text(currentState);
-              statusPopup.css({opacity: 0, display: 'block'});
-              setTimeout(() => {
-                  statusPopup.animate({opacity: 1}, 100);
-              }, 100);
-              setTimeout(() => {
-                  statusPopup.animate({opacity: 0}, 500, () => {
-                      statusPopup.css('display', 'none');
-                  });
-              }, 5000);
-          }
-      });
-  } else {
-      console.error("Status icon or popup element not found");
-  }
+    if (musicIcon.length && songPopup.length) {
+        musicIcon.on("click", function() {
+            const currentSong = $(this).data("song");
+            const songLink = $(this).data("song-link");
+            if (currentSong) {
+                songPopup.html(`<a href="${songLink}" target="_blank" style="color: white; text-decoration: none;">${currentSong}</a>`);
+                songPopup.css({ opacity: 0, display: 'block' });
+                songPopup.animate({ opacity: 1 }, 300); 
+
+                setTimeout(() => {
+                    songPopup.animate({ opacity: 0 }, 1200, () => {
+                        songPopup.css('display', 'none');
+                    });
+                }, 3000);
+            }
+        });
+    } else {
+        console.error("Music icon or song popup element not found");
+    }
+
+    const statusIcon = $("#status-icon");
+    const statusPopup = $("#status-popup");
+
+    if (statusIcon.length && statusPopup.length) {
+        statusIcon.on("click", function() {
+            const currentState = $(this).data("state");
+            if (currentState) {
+                statusPopup.text(currentState);
+                statusPopup.css({ opacity: 0, display: 'block' });
+                statusPopup.animate({ opacity: 1 }, 300); 
+
+                setTimeout(() => {
+                    statusPopup.animate({ opacity: 0 }, 1200, () => {
+                        statusPopup.css('display', 'none');
+                    });
+                }, 3000); 
+            }
+        });
+    } else {
+        console.error("Status icon or popup element not found");
+    }
 });
 
 function consoleText(words, id, colors) {
