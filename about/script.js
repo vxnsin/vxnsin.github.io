@@ -150,15 +150,19 @@ function removeBlur() {
 }
 
 async function fetchDiscordStatus() {
-  try {
-      const response = await fetch(`https://api.lanyard.rest/v1/users/531896089096486922`);
-      const data = await response.json();
-      return data;
-  } catch (error) {
-      console.error('Fehler beim Abrufen der Discord-Daten:', error);
+    try {
+        const response = await fetch(`https://api.lanyard.rest/v1/users/531896089096486922`);
+        const data = await response.json();
+  
+        if (data?.data?.activities) {
+            data.data.activities = data.data.activities.filter(activity => activity.name !== "Spotify");
+        }
+  
+        return data;
+    } catch (error) {
+        console.error('Fehler beim Abrufen der Discord-Daten:', error);
+    }
   }
-}
-
 async function updateStatus() {
   const discordData = await fetchDiscordStatus();
   const activityIcon = $("#activity-icon");
@@ -190,75 +194,34 @@ async function updateStatus() {
           statusIcon.hide(); 
       }
 
-      const filteredActivities = activities.filter(activity => 
-        activity.type !== 4 
-    );
+            const activitiesToDisplay = activities.filter(activity => activity.name !== "Spotify");
 
-      const hasSpotify = filteredActivities.some(activity => activity.name === "Spotify" && activity.type === 1);
-      const hasCustomStatus = filteredActivities.some(activity => activity.name === "Custom Status" && activity.type === 1);
-      
-      if (hasSpotify || hasCustomStatus) {
-          const blacklistedActivities = ["Spotify", "Custom Status"];
-          const activitiesToDisplay = filteredActivities.filter(activity => 
-              !blacklistedActivities.includes(activity.name) || 
-              (activity.name === "Spotify" && activity.type === 1) ||
-              (activity.name === "Custom Status" && activity.type === 1)
-          );
-      
-          if (activitiesToDisplay.length > 0) {
-              const activity = activitiesToDisplay[currentActivityIndex];
-              let activityText = '';
-              let emoji = '';
-      
-              switch (activity.name) {
-                  case "AniWorld":
-                      emoji = '🍿';
-                      activityText = `Anime - ${activity.details}`;
-                      break;
-                  case "Visual Studio Code":
-                      emoji = '⌨️';
-                      const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim();
-                      activityText = `Working - ${filteredDetails}`;
-                      break;
-              }
-      
-              activityIcon.css('display', 'block') 
-                  .attr("data-activity", activityText) 
-                  .text(emoji);
-      
-              currentActivityIndex = (currentActivityIndex + 1) % activitiesToDisplay.length;
-              activityIcon.attr("data-index", currentActivityIndex);
-          } else {
-              activityIcon.css('display', 'none'); 
-          }
-      } else {
-          if (filteredActivities.length > 0) {
-              const activity = filteredActivities[currentActivityIndex];
-              let activityText = '';
-              let emoji = '';
-      
-              switch (activity.name) {
-                  case "AniWorld":
-                      emoji = '🍿';
-                      activityText = `Anime - ${activity.details}`;
-                      break;
-                  case "Visual Studio Code":
-                      emoji = '⌨️';
-                      const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim();
-                      activityText = `Working - ${filteredDetails}`;
-                      break;
-              }
-      
-              activityIcon.css('display', 'block') 
-                  .attr("data-activity", activityText) 
-                  .text(emoji);
-      
-              currentActivityIndex = (currentActivityIndex + 1) % filteredActivities.length;
-              activityIcon.attr("data-index", currentActivityIndex);
-          } else {
-              activityIcon.css('display', 'none'); 
-          }
-      }
-  }
+            if (activitiesToDisplay.length > 0) {
+                const activity = activitiesToDisplay[currentActivityIndex];
+                let activityText = '';
+                let emoji = '';
+                
+                switch (activity.name) {
+                    case "AniWorld":
+                        emoji = '🍿';
+                        activityText = `Anime - ${activity.details}`;
+                        break;
+                    case "Visual Studio Code":
+                        emoji = '⌨️';
+                        const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim();
+                        activityText = `Working - ${filteredDetails}`;
+                        break;
+                }
+        
+                activityIcon.css('display', 'block') 
+                    .attr("data-activity", activityText) 
+                    .text(emoji);
+        
+                currentActivityIndex = (currentActivityIndex + 1) % activitiesToDisplay.length;
+                activityIcon.attr("data-index", currentActivityIndex);
+            } else {
+                activityIcon.css('display', 'none'); 
+            }
+       }
 }
-setInterval(updateStatus, 60000);
+setInterval(updateStatus, 10000);
