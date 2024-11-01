@@ -154,10 +154,6 @@ async function fetchDiscordStatus() {
         const response = await fetch(`https://api.lanyard.rest/v1/users/531896089096486922`);
         const data = await response.json();
   
-        if (data?.data?.activities) {
-            data.data.activities = data.data.activities.filter(activity => activity.name !== "Spotify");
-        }
-  
         return data;
     } catch (error) {
         console.error('Fehler beim Abrufen der Discord-Daten:', error);
@@ -182,42 +178,41 @@ async function updateStatus() {
           musicIcon.addClass("rotating").css('display', 'block');
           const currentSong = discordData.data.spotify.song;
           const songID = discordData.data.spotify.track_id;
-          musicIcon.attr("data-song", currentSong).attr("data-song-link", `https://open.spotify.com/track/${songID}`);
+          musicIcon.data("song", currentSong).data("song-link", `https://open.spotify.com/track/${songID}`);
       } else {
           musicIcon.removeClass("rotating").css('display', 'none');
       }
 
       if (customStatus) {
           statusIcon.show();
-          statusIcon.attr("data-state", customStatus); 
+          statusIcon.data("state", customStatus); 
       } else {
           statusIcon.hide(); 
       }
 
-            const activitiesToDisplay = activities.filter(activity => activity.name !== "Spotify");
+            const activitiesToDisplay = activities.filter(activity => activity.name !== "Spotify" && activity.type !== 4);
 
             if (activitiesToDisplay.length > 0) {
-                const activity = activitiesToDisplay[currentActivityIndex]; 
-                let activityText = '';
-                let emoji = '';
-                
-                switch (activity.name) {
-                    case "AniWorld":
-                        emoji = '🍿';
-                        activityText = `Anime - ${activity.details}`;
-                        break;
-                    case "Visual Studio Code":
-                        emoji = '⌨️';
-                        const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim();
-                        activityText = `Working - ${filteredDetails}`;
-                        break;
-                }
+                const activity = activitiesToDisplay[currentActivityIndex];
+                            switch (activity.name) {
+                                case "AniWorld":
+                                    emoji = '🍿';
+                                    activityText = `Anime - ${activity.details}`;
+                                    break;
+                                case "Visual Studio Code":
+                                    const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim(); 
+                                    emoji = '⌨️';
+                                    activityText = `Working - ${filteredDetails}`;
+                                    break;
+                        }       
+
                         activityIcon.css('display', 'block')
-                        .attr("data-activity", activityText) 
-                        .text(emoji);
+                            .data("activity", activityText)
+                            .text(emoji);
+
             
                     currentActivityIndex = (currentActivityIndex + 1) % activitiesToDisplay.length;
-                    activityIcon.attr("data-index", currentActivityIndex);
+                    activityIcon.data("index", currentActivityIndex);
             } else {
                 activityIcon.css('display', 'none'); 
             }
