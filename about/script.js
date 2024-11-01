@@ -197,7 +197,7 @@ async function updateStatus() {
             const activitiesToDisplay = activities.filter(activity => activity.name !== "Spotify");
 
             if (activitiesToDisplay.length > 0) {
-                const activity = await activitiesToDisplay[currentActivityIndex];
+                const activity = activitiesToDisplay[currentActivityIndex]; 
                 let activityText = '';
                 let emoji = '';
                 
@@ -212,13 +212,12 @@ async function updateStatus() {
                         activityText = `Working - ${filteredDetails}`;
                         break;
                 }
-        
-                activityIcon.css('display', 'block') 
-                    .attr("data-activity", activityText) 
-                    .text(emoji);
-        
-                currentActivityIndex = (currentActivityIndex + 1) % activitiesToDisplay.length;
-                activityIcon.attr("data-index", currentActivityIndex);
+                        activityIcon.css('display', 'block')
+                        .attr("data-activity", activityText) 
+                        .text(emoji);
+            
+                    currentActivityIndex = (currentActivityIndex + 1) % activitiesToDisplay.length;
+                    activityIcon.attr("data-index", currentActivityIndex);
             } else {
                 activityIcon.css('display', 'none'); 
             }
