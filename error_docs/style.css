@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
 .center-xy {
     width: inherit;
     top: 50%;
@@ -57,7 +58,7 @@ p {
     margin-top: 20px;
     cursor: pointer;
     border-radius: 50px;
-    transition: #000 0.3s ease;
+    transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
