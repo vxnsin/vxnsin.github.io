@@ -20,6 +20,16 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+            <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8BQG58XL1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-V8BQG58XL1');
+        </script>
 </head>
 <body> 
     <script src="about/script.js"></script>
@@ -96,24 +106,9 @@
         <!--Skills-->
         <section class="section--page">
             <h2 align="center">Skills</h2>
-                <p align="center" id="codingExperience">N/A Years ᕁ Coding experience.</p>
-                <p align="center" id="techExperience">N/A Years ᕁ Tech experience.</p>
+                <p align="center" id="codingExperience">6 ᕁ Coding experience.</p>
+                <p align="center" id="techExperience">6 ᕁ Tech experience.</p>
             </ul>
-                <script>
-                    function updateExperience() {
-                        fetch('about/data.json')
-                        .then(response => response.json())
-                        .then(data => {
-                            var codingExperienceValue = data.codingExperience;
-                            var techExperienceValue = data.techExperience;
-                        
-                            document.getElementById("codingExperience").innerText = codingExperienceValue + " Years ᕁ Coding experience.";
-                            document.getElementById("techExperience").innerText = techExperienceValue + " Years ᕁ Tech experience.";
-                        })
-                        .catch(error => console.error('Error:', error));
-                    }
-                    updateExperience();
-                </script>
             </section>
         <!--Tech-Stack-->
         <section class="section--page">
@@ -128,7 +123,7 @@
             </div>
         </section>
             <!--Projects-->
-            <section class="section--page" id="work-history-wrapper">
+            <section class="section--page projects-section" id="work-history-wrapper">
                 <h2 align="center">Projects</h2>
                     <div class="line-break"></div>
                     <div class="card--work-history">
@@ -161,11 +156,12 @@
                             <strong>GamesCloud [Aborted ᕁ 2022]</strong>
                             <p>GamesCloud was a Minecraft Network, it was canceled due to the too small number of players and to the lack of motivation.</p>
                         </div>
-                        <div class="line-break--nocolor"></div>
              </section>
-         </div>
+            </div>
     </body>
     <footer>
-        Made with ❤️ by vxnsin
+        Made with ❤️ by Vensin
+        <br>
+        <a href="https://www.youtube.com/watch?v=lPCc78REQpU" class="song-link" target="_blank">Background Song</a>
     </footer>
 </html>
