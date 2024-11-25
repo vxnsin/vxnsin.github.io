@@ -12,12 +12,12 @@ html_template = """<!DOCTYPE html>
     <title>{title}</title>
     <link rel="stylesheet" href="./style.css">
 
+    <meta property="author" content="Vensin">
     <meta property="og:title" content="{title}">
     <meta property="og:description" content="{description}">
     <meta property="og:url" content="{url}" id="og-url">
     <meta property="og:image" content="{image}">
     <meta property="og:type" content="website">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{title}">
     <meta name="twitter:description" content="{description}">
