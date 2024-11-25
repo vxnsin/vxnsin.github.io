@@ -70,8 +70,9 @@ $(document).ready(function() {
     if (statusIcon.length && statusPopup.length) {
         statusIcon.on("click", function() {
             const currentState = $(this).data("state");
+            const link = $(this).data("link");
             if (currentState) {
-                statusPopup.text(currentState);
+                statusPopup.html(`<a href="${link}" target="_blank" style="color: white; text-decoration: none;">${currentState}</a>`);
                 statusPopup.css({ opacity: 0, display: 'block' });
                 statusPopup.animate({ opacity: 1 }, 300); 
 
@@ -168,6 +169,7 @@ async function updateStatus() {
       const isListeningToSpotify = discordData.data.listening_to_spotify;
       const activities = discordData.data.activities;
       const customStatus = discordData.data.activities.find(activity => activity.type === 4)?.state;
+      const customActivity = discordData.data.activities.find(activity => activity.type === 4); 
 
       statusIndicator.removeClass('status-online status-dnd status-idle status-offline').addClass(`status-${userStatus}`);
 
@@ -180,28 +182,77 @@ async function updateStatus() {
           musicIcon.removeClass("rotating").css('display', 'none');
       }
 
-      if (customStatus) {
-          statusIcon.show();
-          statusIcon.data("state", customStatus); 
-      } else {
-          statusIcon.hide(); 
-      }
+      if (customActivity) {
+        statusIcon.show();
+        statusIcon.data("state", customStatus); 
 
-            const activitiesToDisplay = activities.filter(activity => activity.name !== "Spotify" && activity.type !== 4);
-
+            if (customActivity.emoji) {
+                let emojiHTML = '';
+                
+                if (customActivity.emoji.animated) {
+                    emojiHTML = `<img src="https://cdn.discordapp.com/emojis/${customActivity.emoji.id}.gif" alt="${customActivity.emoji.name}" class="status-icon-img" />`;
+                } else {
+                    emojiHTML = `<img src="https://cdn.discordapp.com/emojis/${customActivity.emoji.id}.png" alt="${customActivity.emoji.name}" class="status-icon-img" />`;
+                }
+                
+                statusIcon.html(emojiHTML);
+            } else {
+                statusIcon.html('💬');
+            }
+        } else {
+            statusIcon.html('💬');
+        }
+        const activitiesToDisplay = activities.filter(activity => activity.name !== "Spotify" && activity.type !== 4);
+        
             if (activitiesToDisplay.length > 0) {
                 const activity = activitiesToDisplay[currentActivityIndex];
                             switch (activity.name) {
                                 case "AniWorld":
-                                    emoji = '🍿';
-                                    activityText = `Anime - ${activity.details}`;
-                                    break;
+                                case "Netflix":
+                                        emoji = '🍿';
+                                        activityText = `Schaut ${activity.details} (${activity.name})`;
+                                        break;
                                 case "Visual Studio Code":
-                                    const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim(); 
-                                    emoji = '⌨️';
-                                    activityText = `Working - ${filteredDetails}`;
-                                    break;
-                        }       
+                                   const filteredDetails = activity.state.replace(/💼/g, '').replace(/ᕁ/g, '').trim(); 
+                                   emoji = '⌨️';
+                                   activityText = `Working - ${filteredDetails}`;
+                                   break;  
+                                case "YouTube":
+                                    const startTime = activity.timestamps?.start;
+                                    const endTime = activity.timestamps?.end;
+                        
+                                    let durationText = '';
+                                    if (startTime && endTime) {
+                                        const duration = (endTime - startTime) / (1000 * 60); 
+                                        durationText = `(${Math.floor(duration)} Min.)`;
+                                    }
+                        
+                                    emoji = '📺';
+                                    activityText = `Schaut ${activity.details} ${durationText}`;
+                                        break;
+                                    default:
+                                        if (activity.type === 0 && activity.name) { 
+                                            const startTime = activity.timestamps?.start;
+                                            let elapsedTime = "";
+                                            
+                                            if (startTime) {
+                                                const now = Date.now();
+                                                const duration = now - startTime;
+                        
+                                                const hours = Math.floor(duration / (1000 * 60 * 60));
+                                                const minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+                        
+                                                elapsedTime = hours > 0 
+                                                    ? `seit ${hours}h` 
+                                                    : (minutes > 0 ? `seit ${minutes}m` : `gerade eben`);
+                                            }
+                        
+                                            emoji = '🎮';
+                                            activityText = `Spielt ${activity.name} (${elapsedTime})`;
+                                        } else {
+                                            console.warn(`Unbekannte Aktivität: ${activity.name}`);
+                                        }
+                                }
 
                         activityIcon.css('display', 'block')
                             .data("activity", activityText)

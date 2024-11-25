@@ -486,7 +486,7 @@ a {
 .activity-icon {
     position: absolute;
     bottom: 60px; 
-    right: -20px;   
+    right: -19px;   
     font-size: 24px;
     cursor: pointer;
     display: none; 
@@ -498,6 +498,12 @@ a {
     font-size: 24px;
     cursor: pointer;
     display: none; 
+}
+.status-icon-img {
+    width: 24px;
+    height: 24px; 
+    margin-right: 5px; 
+    cursor: pointer;
 }
 
 .music-icon {
@@ -596,4 +602,3 @@ a {
     font-size: 24px; 
     transition: color 0.3s;
 }
-
