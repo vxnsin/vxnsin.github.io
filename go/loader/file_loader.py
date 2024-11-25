@@ -23,7 +23,7 @@ html_template = """<!DOCTYPE html>
     <meta name="twitter:description" content="{description}">
     <meta name="twitter:image" content="{image}">
     <meta name="twitter:url" content="{url}" id="twitter-url">
-
+    <link rel="canonical" href="{url}">
     <script>
         function redirect() {{
             const redirectUrl = "{url}";

@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="preload">
 
             <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8BQG58XL1"></script>
@@ -59,9 +60,12 @@
                             <div id="activity-icon" class="activity-icon">⌨️</div> 
                             <div id="status-icon" class="status-icon">💬</div> 
                             <div id="music-icon" class="music-icon">📀</div> 
-                            <div id="activity-popup" class="activity-popup"></div> 
-                            <div id="song-popup" class="song-popup"></div> 
-                            <div id="status-popup" class="status-popup"></div> 
+                            
+                            <div id="status-popup" class="status-popup status-popup-hide"></div>
+
+                            <div id="song-popup" class="song-popup song-popup-hide"></div>
+                            
+                            <div id="activity-popup" class="activity-popup activity-popup-hide"></div>
                         </div>
                     </div>
                         <div id="socials--list">
