@@ -139,7 +139,7 @@ async function updateStatus() {
         status: $("#status-icon"),
     };
 
-    const statusClass = `status-${data.discord_status}`;
+    const statusClass = `status-${data.discord_status} glow-effect`;
     statusIndicator.attr('class', statusClass);
 
     const customActivity = data.activities.find(activity => activity.type === 4);
@@ -154,7 +154,6 @@ async function updateStatus() {
             if (customActivity.emoji.animated) {
                 emojiHTML = `<img src="https://cdn.discordapp.com/emojis/${customActivity.emoji.id}.gif" alt="${customActivity.emoji.name}" class="status-icon-img" />`;
             } else {
-                // Otherwise, use the static .png emoji
                 emojiHTML = `<img src="https://cdn.discordapp.com/emojis/${customActivity.emoji.id}.png" alt="${customActivity.emoji.name}" class="status-icon-img" />`;
             }
             statusIcon.html(emojiHTML); 

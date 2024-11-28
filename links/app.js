@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     const container = $('.links-container');
 
     container.on('click', '.title-share-button', function(event) {
@@ -37,7 +38,7 @@ $(document).ready(function() {
     }
 
     function loadJSON(callback) {
-        $.getJSON('links.json', function(data) {
+        $.getJSON('./links.json', function(data) {
             callback(data);
         }).fail(function(jqxhr, textStatus, error) {
             console.error('Error loading JSON:', textStatus, error);
@@ -49,7 +50,8 @@ $(document).ready(function() {
         links.forEach(link => {
             const title = $('<a>', {
                 class: 'title',
-                href: link.url
+                href: link.url,
+                id: link.name
             });
 
             const icon = $('<i>', {
@@ -64,24 +66,23 @@ $(document).ready(function() {
             });
 
             if (link.shareButton) {
-                const svg = $('<svg>', {
-                    width: 16,
-                    height: 16,
-                    viewBox: '0 0 16 16',
-                    class: 'sc-gKsewC iPWGYb'
-                });
-
-                const path = $('<path>', {
-                    'fill-rule': 'evenodd',
-                    'clip-rule': 'evenodd',
-                    d: 'M10.6464 3.85347L11 4.20702L11.7071 3.49992L11.3536 3.14636L8.35355 0.146362H7.64645L4.64645 3.14636L4.29289 3.49992L5 4.20702L5.35355 3.85347L7.5 1.70702V9.49992V9.99992H8.5V9.49992V1.70702L10.6464 3.85347ZM1 5.49994L1.5 4.99994H4V5.99994H2V14.9999H14V5.99994H12V4.99994H14.5L15 5.49994V15.4999L14.5 15.9999H1.5L1 15.4999V5.49994Z',
-                    fill: 'currentColor'
-                });
-
-                svg.append(path);
-                shareButton.append(svg);
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('width', '16');
+                svg.setAttribute('height', '16');
+                svg.setAttribute('viewBox', '0 0 16 16');
+            
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('fill-rule', 'evenodd');
+                path.setAttribute('clip-rule', 'evenodd');
+                path.setAttribute(
+                    'd',
+                    'M10.6464 3.85347L11 4.20702L11.7071 3.49992L11.3536 3.14636L8.35355 0.146362H7.64645L4.64645 3.14636L4.29289 3.49992L5 4.20702L5.35355 3.85347L7.5 1.70702V9.49992V9.99992H8.5V9.49992V1.70702L10.6464 3.85347ZM1 5.49994L1.5 4.99994H4V5.99994H2V14.9999H14V5.99994H12V4.99994H14.5L15 5.49994V15.4999L14.5 15.9999H1.5L1 15.4999V5.49994Z'
+                );
+                path.setAttribute('fill', 'currentColor');
+                svg.appendChild(path);
+            
+                shareButton.append(svg); // Hier wird der bestehende `shareButton` genutzt
             }
-
             title.append(icon);
             title.append(text);
             title.append(shareButton);
